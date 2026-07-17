@@ -1,19 +1,18 @@
-print("=== Тени Старого Дома ===")
-print()
-print("Ты стоишь перед старым деревянным особняком.")
-print("Ветер шелестит листьями. Дверь слегка приоткрыта...")
+"""
+Walking Simulator: Тени Старого Дома
+Точка входа — запускает актуальную версию игры.
+"""
+from pathlib import Path
+import runpy
 
-name = input("\nКак тебя зовут, путник? ")
+GAME_FILE = Path(__file__).with_name("main2_grok_v1.6.py")
 
-print(f"\nПривет, {name}.")
-print("Ты делаешь шаг вперёд...")
 
-print("\nЧто будешь делать?")
-print("1. Постучать в дверь")
-print("2. Заглянуть в ближайшее окно")
-print("3. Обойти дом вокруг")
+def main():
+    if not GAME_FILE.is_file():
+        raise SystemExit(f"Не найден файл игры: {GAME_FILE.name}")
+    runpy.run_path(str(GAME_FILE), run_name="__main__")
 
-choice = input("\nТвой выбор (1/2/3): ")
 
-print("\n... (пока заглушка. Продолжим, когда пройдём условный оператор)")
-print("Хорошая работа! Ты уже используешь input() и print().")
+if __name__ == "__main__":
+    main()
